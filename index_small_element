@@ -1,0 +1,43 @@
+lst=[3,8,90,23,-8,1]
+def small_el(lst,lower_index,upper_index,i=0,small=-1,small_index=-1):
+    '''
+    objective-to find the index of the minimum element in list in the range of given indexes
+    input parameters-
+                    lst-a list for which smallest element to be find out
+                    lower_index-starting index
+                    upper_index-ending index
+    return value-none
+    '''
+    #approach-using recursion
+    if(i==lower_index):
+        small=lst[lower_index]
+        small_index=lower_index
+        return small_el(lst,lower_index,upper_index,i+1,small,small_index)
+    elif(i==upper_index+1):
+        return small_index
+    elif(lst[i]<small):
+        small=lst[i]
+        small_index=i
+        return small_el(lst,lower_index,upper_index,i+1,small,small_index)
+    else:
+        return small_el(lst,lower_index,upper_index,i+1,small,small_index)
+    
+# Test case 1
+lower_index=0
+upper_index=len(lst)-1
+min_index=small_el(lst,lower_index,upper_index)
+print('Index of smallest element between index (',lower_index,',',upper_index,')is: ',min_index)
+
+
+# Test case 2
+lower_index=2
+upper=len(lst)-2
+min_index=small_el(lst,lower_index,upper_index)
+print('Index of smallest element between index (',lower_index,',',upper_index,')is: ',min_index)
+
+# Test case 3
+lower_index=1
+upper_index=1
+min_index=small_el(lst,lower_index,upper_index)
+print('Index of smallest element between index (',lower_index,',',upper_index,')is: ',min_index)
+  
