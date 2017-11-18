@@ -1,0 +1,42 @@
+lst=[3,8,90,23,-8,1]
+def small_el(lst,lower_index,upper_index,i=0,small=-1,small_index=-1):
+    '''
+    objective-to find the index of the minimum element in list in the range of given indexes
+    input parameters-
+                    lst-a list for which smallest element to be find out
+                    lower_index-starting index
+                    upper_index-ending index
+    return value-none
+    '''
+    #approach-using recursion
+    if(i==lower_index):
+        small=lst[lower_index]
+        small_index=lower_index
+        return small_el(lst,lower_index,upper_index,i+1,small,small_index)
+    elif(i==upper_index+1):
+        return small_index
+    elif(lst[i]<small):
+        small=lst[i]
+        small_index=i
+        return small_el(lst,lower_index,upper_index,i+1,small,small_index)
+    else:
+        return small_el(lst,lower_index,upper_index,i+1,small,small_index)
+
+def selection_sort(lst,index=0):
+    '''
+    objective-to sort a list(selection sort)
+    aprroach-using recursion and function small_el
+    input parameters-
+                    lst-a list that is to be sorted
+    return value-none
+    '''
+    size=len(lst)
+    if(index!=size):
+        small_index=small_el(lst,index,len(lst)-1)
+        temp=lst[index]
+        lst[index]=lst[small_index]
+        lst[small_index]=temp
+        selection_sort(lst,index+1)
+    
+selection_sort(lst)
+print(lst)
