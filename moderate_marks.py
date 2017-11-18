@@ -8,7 +8,7 @@ def computeModeratedMarks(file1, file2, addPercent):
 
     Input Parameters: file1, file2: file names - string values
 
-                      addPercent – numeric value
+    addPercent – numeric value
 
     Return Value: None
 
